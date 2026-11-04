@@ -2,9 +2,9 @@ import Design from "../model/DesignCollection.js";
 
 export const Degin_Collcetion = async (req, res) => {
     try {
-        if (!req.file) return res.status(401).send("Design required")
+        if (!req.files) return res.status(401).send("Design required")
         const Upload = await Design.create({
-            photo: req.file.filename,
+            photo: req.files.map((file) => file.filename),
             Description: req.body.Description,
             Type: req.body.Type
         })
