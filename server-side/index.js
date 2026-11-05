@@ -8,6 +8,10 @@ import Designrouter from "./routes/Upload_Design_routes.js";
 import GetDesignssRoutre from "./routes/GetDesignRoutes.js";
 import randomImgae from "./routes/ShowRandomDesignRouter.js";
 import updateImgRouter from "./routes/UpdateImageRouter.js";
+import delRouter from "./routes/DeleteRouter.js";
+import FilterRouter from "./routes/FilltrRouter.js";
+import Searchrouter from "./routes/SearcgRouter.js";
+import categoryRouter from "./routes/CreateCategoruRouter.js";
 
 import { Auth } from "./middleware/Auth.js";
 const app = express()
@@ -19,6 +23,10 @@ app.use("/api/user", Designrouter)
 app.use("/api/user", GetDesignssRoutre)
 app.use("/api/user", randomImgae)
 app.use("/api/user", updateImgRouter)
+app.use("/api", Auth, delRouter)
+app.use("/api", FilterRouter)
+app.use("/api", Searchrouter)
+app.use("/api", Auth, categoryRouter)
 connectDB().then(() => {
     app.listen(8080, () => {
         console.log("server run sucessfully")

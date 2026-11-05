@@ -11,9 +11,10 @@ const DesignCollection = new mongoose.Schema({
         type: String,
         default: "Image can turn into real if you feel the image"
     },
-    Type: {
-        type: String,
-        default: "Artfolio"
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "category",
+        required: true
     },
     date: {
         type: Date,
