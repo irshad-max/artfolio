@@ -14,21 +14,21 @@ import Searchrouter from "./routes/SearcgRouter.js";
 import categoryRouter from "./routes/CreateCategoruRouter.js";
 
 import { Auth } from "./middleware/Auth.js";
-const app = express()
-app.use(express.json())
-app.use("/api/users", router)
-app.use("/api/users", LoginRoute)
-app.use("/api/user/admin-detail", Auth, Adminrouter)
-app.use("/api/user", Designrouter)
-app.use("/api/user", GetDesignssRoutre)
-app.use("/api/user", randomImgae)
-app.use("/api/user", updateImgRouter)
-app.use("/api", Auth, delRouter)
-app.use("/api", FilterRouter)
-app.use("/api", Searchrouter)
-app.use("/api", Auth, categoryRouter)
+const app = express();
+app.use(express.json());
+app.use("/api/users", router);
+app.use("/api/users", LoginRoute);
+app.use("/api/user/admin-detail", Auth, Adminrouter);
+app.use("/api/user", Designrouter);
+app.use("/api/user", GetDesignssRoutre);
+app.use("/api/user", randomImgae);
+app.use("/api/user", updateImgRouter);
+app.use("/api", Auth, delRouter);
+app.use("/api", FilterRouter);
+app.use("/api", Searchrouter);
+app.use("/api", Auth, categoryRouter);
 connectDB().then(() => {
-    app.listen(8080, () => {
-        console.log("server run sucessfully")
-    })
-})
+  app.listen(8080, () => {
+    console.log("server run sucessfully");
+  });
+});

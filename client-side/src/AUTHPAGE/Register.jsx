@@ -1,0 +1,75 @@
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+const Register_page = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+  return (
+    <>
+      <div className="Registr_containers">
+        <p className="greeting_text">
+          Create your <span>NEXPIXEL account</span>
+        </p>
+        <form className="Form" onSubmit={handleSubmit(onSubmit)}>
+          <label>Username</label>
+          <br />
+          <input
+            type="text"
+            {...register("name", {
+              required: "Username is required",
+              minLength: 2,
+              maxLength: 100,
+              message: "Username must be between 2 and 100 characters",
+            })}
+            placeholder="ENTER YOUR USERNAME"
+          />
+          {errors.name && <p>{errors.name.message}</p>}
+          <br />
+          <label>Email</label>
+          <br />
+          <input
+            type="text"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "Invalid email address",
+              },
+              maxLength: 100,
+            })}
+            placeholder="ENTER YOUR EMAIL"
+          />
+          {errors.email && <p>{errors.email.message}</p>}
+          <br />
+          <label>Password</label>
+          <br />
+          <input
+            type="text"
+            {...register("password", {
+              required: "Password is required",
+              minLength: 8,
+              maxLength: 15,
+            })}
+            placeholder="ENTER YOUR PASSWORD"
+          />
+          {errors.password && <p>{errors.password.message}</p>}
+          <br />
+          <button className="submit">Create your Baatchit account</button>
+          <br />
+        </form>
+        <p className="link">
+          BACK TO THE WELCOME PAGE?
+          <Link to="/" className="a">
+            Back
+          </Link>
+        </p>
+      </div>
+    </>
+  );
+};
+export default Register_page;
