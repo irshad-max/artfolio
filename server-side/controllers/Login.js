@@ -1,18 +1,24 @@
 import user from "../model/userinfo.js";
-import jwt from "jsonwebtoken"
+import "dotenv/config";
 import bcrypt from "bcryptjs";
+export const CreateAdmin = async (req, res) => {
+  try {
+    const ADMINEMAIL = process.env.ADMINEMAIL;
+    const ADMINPASSWORD = process.env.ADMINPASSWORD;
 
-export const Login = async (req, res) => {
-    const { email, password } = req.body;
-    if (!email || !password) return res.status(401).send("unauthorize")
-    try {
-        const User = await user.findOne({ email: email })
-        if (!User) return res.status(401).send("email invalid")
-        const check = await bcrypt.compare(password, User.password)
-        if (!check) return res.status(401).send("password is worng")
-        const token = jwt.sign({ _id: User._id, email: User.email }, "K9xP2mQ7vL4zA8nR5tW3bY6cD", { expiresIn: "7d" })
-        res.status(200).json({ token, User })
-
+    const existingAdmin = await user.findOne({
+      email: ADMINEMAIL,
+    });
+    if (existingAdmin) {
+      return console.log("Admin already exists");
     }
-    catch (e) { console.log("error", e.message) }
-}
+    const hashpassword = await bcrypt.hash(ADMINPASSWORD, 10);
+    await user.create({
+      email: ADMINEMAIL,
+      password: hashpassword,
+    });
+   console.log("Admin created successfully")
+  } catch (e) {
+    console.log("Server error");
+  }
+};
