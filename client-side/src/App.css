@@ -25,7 +25,7 @@ body {
   align-items: center;
   border-radius: 10px;
   box-shadow: #333332 0 0 10px;
-  background-color: #9075bc;
+  background-color: #ffffff;
 }
 
 .greeting_text {
@@ -41,6 +41,13 @@ body {
   color: #710db9;
 }
 
+.greeting_text li {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  animation: float 2s ease-in-out infinite;
+}
 .Form {
   height: 100px;
   width: 200px;
@@ -49,12 +56,14 @@ body {
 }
 
 .Form input {
+  padding:12px;
   margin: 0 0 5px;
   border-radius: 10px;
-  min-height: 23px;
+  min-height: 30px;
   width: 250px;
   max-width: calc(100vw - 64px);
   border: 2px solid rgb(142, 139, 139);
+  background-color:white;
 }
 
 .Form label {
@@ -62,15 +71,15 @@ body {
   font-size: 12px;
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
-  color: rgb(24, 24, 23);
+  color: rgb(108, 108, 105);
 }
 
 .link {
+  font-size: 14px;
+  font-family:'Times New Roman', Times, serif;
   margin: 0;
   transform: translateY(80px);
-  font-size: 19px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #3e3d3b;
+  color: #727270;
 }
 
 .link a,
@@ -102,7 +111,7 @@ body {
 .submit {
   margin: 0;
   border-radius: 10px;
-  min-height: 25px;
+  min-height: 30px;
   width: 250px;
   max-width: 100%;
   border: none;

@@ -19,7 +19,7 @@ app.use(
     origin: "http://localhost:5173",
   }),
 );
-app.use("/api/user/admin-detail", Auth, Adminrouter);
+app.use("/api/user/admin-detail",Adminrouter);
 app.use("/api/user", Designrouter);
 app.use("/api/user", GetDesignssRoutre);
 app.use("/api/user", randomImgae);
