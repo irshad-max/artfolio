@@ -1,8 +1,54 @@
 import "../AdminPanel/AdminPanel.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 export const UploadImage = () => {
+  const token = localStorage.getItem("token");
+  const [categories, setcategories] = useState([]);
+  const [desription, setdesription] = useState("");
+  const [SelectedCategories, setSelectedCategories] = useState("");
+
+  useEffect(() => {
+    const show = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/api/categories",
+          {
+            headers: {
+              authorization: `bearer ${token}`,
+            },
+          },
+        );
+        setcategories(response.data.categories);
+      } catch (e) {
+        console.log("error", e.message);
+      }
+    };
+    show();
+  }, [token]);
   const upload = async () => {
     const image = document.getElementById("file");
+    const formData = new FormData();
+
+    formData.append("image", image.files[0]);
+    formData.append("description", desription);
+    formData.append("category", SelectedCategories);
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/user/upload",
+        formData,
+        {
+          headers: {
+            authorization: `bearer ${token}`,
+          },
+        },
+      );
+      console.log(response);
+    } catch (e) {
+      console.log("error", e.message);
+    }
     console.log(image.files[0]);
+    console.log(desription);
+    console.log(SelectedCategories);
   };
 
   return (
@@ -11,20 +57,26 @@ export const UploadImage = () => {
       <p>Add new image to your gallory with category</p>
       <label htmlFor="file">🏞️</label>
       <input type="file" id="file" accept="image/*" className="Image-accept" />
-      <input type="text" placeholder="DESCRIPTION" className="Desription" />
-
       <input
         type="text"
-        list="categories"
-        placeholder="Select category"
-        className="Drop-Down-Menu"
+        placeholder="DESCRIPTION"
+        className="Desription"
+        onChange={(e) => setdesription(e.target.value)}
       />
 
-      <datalist id="categories">
-        <option value="Thumbnail" />
-        <option value="User" />
-        <option value="Naruto" />
-      </datalist>
+      <select
+        value={SelectedCategories}
+        onChange={(e) => setSelectedCategories(e.target.value)}
+        className="Drop-Down-Menu"
+      >
+        <option value="">Select category</option>
+
+        {categories.map((cat) => (
+          <option key={cat._id} value={cat._id}>
+            {cat.category}
+          </option>
+        ))}
+      </select>
       <button onClick={upload}>Upload</button>
     </div>
   );

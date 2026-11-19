@@ -12,6 +12,7 @@ import FilterRouter from "./routes/FilltrRouter.js";
 import Searchrouter from "./routes/SearcgRouter.js";
 import categoryRouter from "./routes/CreateCategoruRouter.js";
 import {AutoLoginrouter} from "./routes/AutoLoginRoutes.js";
+import ShowRouter from './routes/ShowCategoriesRouter.js'
 import { Auth } from "./middleware/Auth.js";
 const app = express();
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use("/api", FilterRouter);
 app.use("/api", Searchrouter);
 app.use("/api", Auth, categoryRouter);
 app.use("/api", Auth, AutoLoginrouter);
+app.use("/api",Auth,ShowRouter);
 connectDB().then(async () => {
   await CreateAdmin();
   app.listen(8080, () => {
