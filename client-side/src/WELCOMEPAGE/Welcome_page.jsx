@@ -38,12 +38,8 @@ function Welcome_page() {
           </p>
 
           <div className="hero-buttons">
-            <Link to="/login" className="get-started">
-              Explore our work →
-            </Link>
-
-            <Link to="/register" className="explore-btn">
-              Create Account
+            <Link to="/Image/gallery" className="get-started">
+              Explore the wolrd →
             </Link>
           </div>
 

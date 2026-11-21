@@ -1,12 +1,11 @@
 import mongoose from "mongoose";
 
 const DesignCollection = new mongoose.Schema({
-    photo: [
+    photo:
         {
             type: String,
             required: true
-        }
-    ],
+        },
     Description: {
         type: String,
         default: "Image can turn into real if you feel the image"

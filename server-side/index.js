@@ -1,5 +1,6 @@
 import cors from "cors";
 import express from "express";
+import path from "path";
 import connectDB from "./config/Databased_connection.js";
 import { CreateAdmin } from "./controllers/Login.js";
 import Adminrouter from "./routes/AdminDetailRoutes.js";
@@ -21,6 +22,7 @@ app.use(
     origin: "http://localhost:5173",
   }),
 );
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 app.use("/api/user/admin-detail",Adminrouter);
 app.use("/api/user", Designrouter);
 app.use("/api/user", GetDesignssRoutre);
