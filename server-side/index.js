@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://nexpixel.onrender.com",
   }),
 );
 app.use("/upload", express.static(path.join(process.cwd(), "upload")));

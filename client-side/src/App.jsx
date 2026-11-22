@@ -14,7 +14,7 @@ function App() {
     const check = async () => {
       try {
         const response = await axios.get(
-          "https://artfolio-1.onrender.com/api/Auth/auto",
+          "https://nexpixel.onrender.com/api/Auth/auto",
           {
             headers: {
               authorization: `Bearer ${token}`,

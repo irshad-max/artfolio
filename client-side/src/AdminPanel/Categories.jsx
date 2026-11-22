@@ -11,7 +11,7 @@ export const Categories = () => {
     const show = async () => {
       try {
         const response = await axios.get(
-          "https://artfolio-1.onrender.com/api/categories",
+          "https://nexpixel.onrender.com/api/categories",
           {
             headers: {
               authorization: `bearer ${token}`,
