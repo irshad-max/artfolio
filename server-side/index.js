@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://nexpixel.onrender.com",
+    origin: "https://artfollio.onrender.com",
   }),
 );
 app.use("/upload", express.static(path.join(process.cwd(), "upload")));
