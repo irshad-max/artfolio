@@ -34,7 +34,7 @@ export const UploadImage = () => {
     formData.append("category", SelectedCategories);
     try {
       const response = await axios.post(
-        "https://artfolio-1.onrender.com/api/user/upload",
+        "https://nexpixel.onrender.com/api/user/upload",
         formData,
         {
           headers: {
@@ -46,9 +46,6 @@ export const UploadImage = () => {
     } catch (e) {
       console.log("error", e.message);
     }
-    console.log(image.files[0]);
-    console.log(desription);
-    console.log(SelectedCategories);
   };
 
   return (
