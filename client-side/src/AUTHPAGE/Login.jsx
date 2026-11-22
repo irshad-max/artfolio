@@ -11,7 +11,7 @@ const Login_page = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/user/admin-detail/Auth/detail",
+        "https://artfolio-1.onrender.com/api/user/admin-detail/Auth/detail",
         data,
       );
       localStorage.setItem("token", response.data.token);

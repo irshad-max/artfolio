@@ -11,7 +11,7 @@ export const UploadImage = () => {
     const show = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/categories",
+          "https://artfolio-1.onrender.com/api/categories",
           {
             headers: {
               authorization: `bearer ${token}`,
@@ -34,7 +34,7 @@ export const UploadImage = () => {
     formData.append("category", SelectedCategories);
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/user/upload",
+        "https://artfolio-1.onrender.com/api/user/upload",
         formData,
         {
           headers: {

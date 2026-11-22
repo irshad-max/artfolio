@@ -16,7 +16,7 @@ export const AllImages = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          "http://localhost:8080/api/user/random/image",
+          "https://artfolio-1.onrender.com/api/user/random/image",
         );
         console.log(response.data.designs[0].photo);
         setImages(

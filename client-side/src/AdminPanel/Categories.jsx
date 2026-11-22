@@ -11,7 +11,7 @@ export const Categories = () => {
     const show = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/categories",
+          "https://artfolio-1.onrender.com/api/categories",
           {
             headers: {
               authorization: `bearer ${token}`,
@@ -35,7 +35,7 @@ export const Categories = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/create/category",
+        "https://artfolio-1.onrender.com/api/create/category",
         { name },
         {
           headers: {
