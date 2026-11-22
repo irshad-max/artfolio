@@ -7,7 +7,7 @@ import Adminrouter from "./routes/AdminDetailRoutes.js";
 import Designrouter from "./routes/Upload_Design_routes.js";
 import GetDesignssRoutre from "./routes/GetDesignRoutes.js";
 import randomImgae from "./routes/ShowRandomDesignRouter.js";
-import updateImgRouter from "./routes/UpdateImageRouter.js";
+// import updateImgRouter from "./routes/UpdateImageRouter.js";
 import delRouter from "./routes/DeleteRouter.js";
 import FilterRouter from "./routes/FilltrRouter.js";
 import Searchrouter from "./routes/SearcgRouter.js";
@@ -22,12 +22,12 @@ app.use(
     origin: "http://localhost:5173",
   }),
 );
-app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+app.use("/upload", express.static(path.join(process.cwd(), "upload")));
 app.use("/api/user/admin-detail",Adminrouter);
 app.use("/api/user", Designrouter);
 app.use("/api/user", GetDesignssRoutre);
 app.use("/api/user", randomImgae);
-app.use("/api/user", updateImgRouter);
+// app.use("/api/user", updateImgRouter);
 app.use("/api", Auth, delRouter);
 app.use("/api", FilterRouter);
 app.use("/api", Searchrouter);

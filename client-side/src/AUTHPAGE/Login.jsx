@@ -1,12 +1,13 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Login_page = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
@@ -14,6 +15,9 @@ const Login_page = () => {
         data,
       );
       localStorage.setItem("token", response.data.token);
+      if (response.data.token) {
+        navigate("/admin");
+      }
     } catch (error) {
       console.error("error", error.message);
     }

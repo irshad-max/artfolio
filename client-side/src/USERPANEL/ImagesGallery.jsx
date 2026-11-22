@@ -104,7 +104,7 @@ export const AllImages = () => {
                   onClick={() => setSelectedImage(img)}
                 >
                   <img
-                    src={`http://localhost:8080/uploads/${encodeURIComponent(img.photo)}`}
+                    src={img.photo}
                     alt={img.description || "Gallery image"}
                   />
 
@@ -115,7 +115,7 @@ export const AllImages = () => {
 
                 <div className="gallery-card-info">
                   <div>
-                    <h4>{img.description || "Untitled Image"}</h4>
+                    <h4>{img.category.category || "Untitled Image"}</h4>
                   </div>
 
                   <button
@@ -150,19 +150,12 @@ export const AllImages = () => {
             </button>
 
             <img
-              src={`http://localhost:8080/uploads/${encodeURIComponent(selectedImage.photo)}`}
+              src={selectedImage.photo}
               alt={selectedImage.description || "Preview"}
             />
 
             <div className="preview-details">
-              <h2>{selectedImage.description || "Untitled Image"}</h2>
-
-              <p>
-                Category:{" "}
-                {typeof selectedImage.category === "object"
-                  ? selectedImage.category?.category
-                  : selectedImage.category || "Uncategorized"}
-              </p>
+              <h2>{selectedImage.category.category || "Untitled Image"}</h2>
             </div>
           </div>
         </div>

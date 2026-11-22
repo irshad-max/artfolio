@@ -1,16 +1,21 @@
 import multer from "multer";
-import path from "path";
 
-const Storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(process.cwd(), "uploads"));
+const storage = multer.memoryStorage();
+
+const upload = multer({
+  storage: storage,
+
+  limits: {
+    fileSize: 25 * 1024 * 1024,
   },
 
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + file.originalname);
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith("image/")) {
+      cb(null, true);
+    } else {
+      cb(new Error("Only image files are allowed!"));
+    }
   },
 });
-
-const upload = multer({ storage: Storage });
 
 export default upload;
