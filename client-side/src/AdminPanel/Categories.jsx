@@ -35,7 +35,7 @@ export const Categories = () => {
     }
     try {
       const response = await axios.post(
-        "https://artfolio-1.onrender.com/api/create/category",
+        "https://nexpixel.onrender.com/api/create/category",
         { name },
         {
           headers: {
