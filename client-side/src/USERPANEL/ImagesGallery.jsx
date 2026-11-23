@@ -138,14 +138,6 @@ export const AllImages = () => {
                   <div>
                     <h4>{img.category.category || "Untitled Image"}</h4>
                   </div>
-                  <br/>
-                  <button
-                    className="view-image-btn"
-                    onClick={() => setSelectedImage(img)}
-                    title="View image"
-                  >
-                    ↗
-                  </button>
                 <button
             className="view-image-btn"
             onClick={() => download(img)}
