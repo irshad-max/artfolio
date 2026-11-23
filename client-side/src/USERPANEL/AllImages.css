@@ -229,7 +229,8 @@
 
 /* CARD DETAILS */
 .gallery-card-info {
-  padding: 15px;
+  min-height:90px;
+  padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -238,9 +239,10 @@
 
 .gallery-card-info h4 {
   color: #292640;
-  font-size: 10px;
-  margin-bottom: 7px;
-  font-weight: 700;
+  flex:1;
+  min-weight:0;
+  font-size: 18px;
+  font-weight: 600;
   overflow-wrap: anywhere;
 }
 
