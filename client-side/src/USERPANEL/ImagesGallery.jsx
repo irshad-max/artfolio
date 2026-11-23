@@ -31,6 +31,14 @@ export const AllImages = () => {
     };
     fetchImages();
   }, []);
+  const download=(data)=>{
+    try{
+      console.log(data)
+    }
+    catch(e){
+      console.log("error",e.message);
+    }
+  }
   return (
     <div className="all-images-page">
       {/* HEADER */}
@@ -124,6 +132,13 @@ export const AllImages = () => {
                     title="View image"
                   >
                     ↗
+                  </button>
+                   <button
+                    className="view-image-btn"
+                    onClick={() =>download(img)}
+                    title="View image"
+                  >
+                    ⬇
                   </button>
                 </div>
               </div>
