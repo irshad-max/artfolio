@@ -31,14 +31,27 @@ export const AllImages = () => {
     };
     fetchImages();
   }, []);
-  const download=(data)=>{
-    try{
-      console.log(data)
-    }
-    catch(e){
-      console.log("error",e.message);
-    }
+ const download = async (img) => {
+  try {
+    const response = await axios.get(img.photo, {
+      responseType: "blob",
+    });
+
+    const blob = new Blob([response.data], {
+      type: response.data.type || "image/jpeg",
+    });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `Nexpixel-${img._id}.jpg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  } catch (e) {
+    console.log("Download error:", e.message);
   }
+};
   return (
     <div className="all-images-page">
       {/* HEADER */}
@@ -133,13 +146,12 @@ export const AllImages = () => {
                   >
                     ↗
                   </button>
-                   <button
-                    className="view-image-btn"
-                    onClick={() =>download(img)}
-                    title="View image"
-                  >
-                    ⬇
-                  </button>
+                <button
+            className="view-image-btn"
+            onClick={() => download(img)}
+            title="Download image">
+             ⬇
+            </button>
                 </div>
               </div>
             );
